@@ -6,4 +6,4 @@ Course GeekBrains study project
 - URLSession, Alamofire, JSONDecoder
 - Realm
 - GCD, NSOperation, PromiseKit
-
+Необходимо добавить POD-ы
