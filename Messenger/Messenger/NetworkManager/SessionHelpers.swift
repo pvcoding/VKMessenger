@@ -12,6 +12,7 @@ import PromiseKit
 
 enum InternalError: LocalizedError {
     case unexpected
+
 }
 
 extension Session {
