@@ -15,48 +15,30 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
   
-
+    private func decodeJSON<T: Decodable>(type: T.Type, fromData: Data?) -> T? {
+        let decoder = JSONDecoder()
+        guard let data = fromData, let response = try? decoder.decode(type.self, from: data) else { return nil }
+        return response
+    }
     
    // MARK: LoadFriends
 
     func loadFriends(completion: @escaping ([UserItem]) ->()) {
-//
-//        let userIdString = String(SessionInfo.shared.userId)
-//
+
         let configuration = URLSessionConfiguration.default
 
         let session = URLSession(configuration: configuration)
-//
-//        var urlConstructor = URLComponents()
-//
-//        urlConstructor.scheme = "https"
-//        urlConstructor.host = "api.vk.com"
-//        urlConstructor.path = "/method/friends.get"
-//
-//        urlConstructor.queryItems = [
-//            URLQueryItem(name: "access_token", value: SessionInfo.shared.token),
-//            URLQueryItem(name: "user_id", value: userIdString),
-//            URLQueryItem(name: "fields", value: "photo_50"),
-//            URLQueryItem(name: "order", value: "name"),
-//            URLQueryItem(name: "v", value: "5.130")
-//
-//        ]
-//
-//        guard let url = urlConstructor.url else { return }
-
-        
+    
         let apiRouter = APIRouterStructerWithComponents(apiRouter: .friends)
         let url = apiRouter.url()
         
         let task = session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
 
-            do {
-                let users = try JSONDecoder().decode(User.self, from: data).response.items
+           
+            guard  let users = self.decodeJSON(type: User.self, fromData: data)?.response.items else { return }
                 completion(users)
-            } catch {
-                print(error.localizedDescription)
-            }
+            
         }
 
         task.resume()

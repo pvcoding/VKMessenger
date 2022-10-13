@@ -14,8 +14,8 @@
             filePath = "Messenger/NetworkManager/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "loadFotos(token:userId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "Messenger/NetworkManager/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "joinGroup(token:groupID:)"
             landmarkType = "7">
          </BreakpointContent>
